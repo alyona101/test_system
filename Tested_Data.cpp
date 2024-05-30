@@ -4,11 +4,8 @@
 using namespace std;
 
 class Tested {
-private:
-    vector<string> test;
-    int testResults;
-
 public:
+    int testResults;
     friend class PersonalData;
 
     void viewTest() {
