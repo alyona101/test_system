@@ -23,9 +23,11 @@ protected:
 
 class Admin : public User {
 public:
-    static Admin& getInstance() {
-        static Admin instance;
-        return instance;
+    static Admin* getInstance() {
+        if(admin_ == NULL){
+        admin_=new Admin();
+        }
+        return admin_ ;
     }
 
     void Registration() override {}
@@ -41,11 +43,16 @@ private:
         login = "admin";
         pass = "admin";
     }
+    static Admin* admin_ = NULL;
+    
 };
 
     int main() {
-        Admin& admin = Admin::getInstance();
-
+        Admin* admin = Admin::getInstance();
+        
+        Admin* admin1 = Admin::getInstance();
+        Admin& admin1 = Admin::getInstance();
+        
         admin.Registration();
         admin.Add_Test();
         admin.Delete_Test("Question");
